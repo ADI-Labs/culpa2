@@ -19,6 +19,7 @@ def connect():
     review = Review(professor="Test", engagement=0)
     session.add(review)
     session.commit()
+    #todo
 
 
 def test():
