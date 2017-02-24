@@ -6,7 +6,7 @@ import json
 
 BASE_URL = 'http://api.culpa.info'
 
-departments = json.loads(open('departments.json', 'r').read())
+departments = json.loads(open('./data/departments.json', 'r').read())
 
 for dept in departments['departments']:
     id = dept['id']
