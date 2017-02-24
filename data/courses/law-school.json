@@ -1,1 +1,1 @@
-[{"number": null, "name": "Judicial Review and Educational Reform", "department_ids": [71], "id": 2121}, {"number": "HIST 4446", "name": "Readings in American Legal History", "department_ids": [71], "id": 5098}]
+[{"department_ids": [71], "name": "Judicial Review and Educational Reform", "id": 2121, "number": null}, {"department_ids": [71], "name": "Readings in American Legal History", "id": 5098, "number": "HIST 4446"}]
