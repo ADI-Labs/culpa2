@@ -9,8 +9,9 @@ class course(Base):
     __tablename__ = 'courses'
     department_ids = Column(String)
     name = Column(String)
+    course_key = Column(Integer, primary_key=True)
+    number = Column(String)
     id = Column(Integer)
-    number = Column(Integer)
 
     def __repr__(self):
         return str(self.name)

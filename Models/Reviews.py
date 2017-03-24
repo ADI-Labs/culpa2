@@ -15,8 +15,8 @@ class Review(Base):
     experience = Column(Integer)
     recommend = Column(Boolean)
     comment = Column(String)
-    professorId = Column(Integer)
-    courseId = Column(Integer)
+    professorid = Column(Integer)
+    courseid = Column(Integer)
 
     def __repr__(self):
         return self.professor + self.course + self.engagement
