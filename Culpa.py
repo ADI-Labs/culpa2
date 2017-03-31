@@ -23,14 +23,49 @@ def get_professor():
     prof = request.args.get('review_professor')
     prof_searches = session.query(Professors.professor).filter(Professors.professor.last_name.ilike("%{0}%".format(prof))).limit(5).all()
 
-    professor_options = []
+    if len(prof_searches) == 0:
+        return jsonify({})
+    else:
+        professor_options = []
 
-    for prof in prof_searches:
-        professor_options.append({
-            "title": prof.first_name + " " + prof.last_name,
+        for prof in prof_searches:
+            professor_options.append({
+                "title": prof.first_name + " " + prof.last_name,
+                "set_attributes": {
+                    "review_professor": prof.first_name + " " + prof.last_name,
+                    "review_professor_id": prof.professor_key
+                },
+                "block_names": ["Entry Class Demo"],
+                "type": "show_block"
+            })
+
+        response = {
+            'messages': [
+                {
+                    "text": "Which of these names looks right?",
+                    "quick_replies": professor_options
+                }
+            ]
+        }
+
+        return jsonify(response)
+
+@app.route('/getClass')
+def get_class():
+    prof_id = request.args.get('review_professor_id')
+    r = requests.get("http://api.culpa.info/courses/professor_id/"+prof_id);
+    json_response = r.json()
+    courses = json_response['courses']
+
+
+    course_options = []
+
+    for course in courses:
+        course_options.append({
+            "title": course['name'],
             "set_attributes": {
-                "review_professor": prof.first_name + " " + prof.last_name,
-                "review_professor_id": prof.professor_key
+                "review_class": course['name'],
+                "review_professor_id": prof_id
             },
             "block_names": ["Entry Class Demo"],
             "type": "show_block"
@@ -39,34 +74,13 @@ def get_professor():
     response = {
         'messages': [
             {
-                "text": "Which of these names looks right?",
-                "quick_replies": professor_options
+                "text": "Here's the classes taught by {{review_professor}}. Which one would you like to review?",
+                "quick_replies": course_options
             }
         ]
     }
 
     return jsonify(response)
-
-    # return jsonify(json_profs)
-
-    # with open("./data/professor.json", 'r') as f:
-    #     _data = f.read()
-    #     return_prof = json.loads(_data)
-    #     # for i in range(len(prof_searches)):
-    #     #     return_prof['messagess'][0]['quick_replies'][i]['title'] = prof_searches[i].first_name + " " + prof_searches[i].middle_name + " " + prof_searches[i].last_name
-    #     return jsonify(return_prof)
-
-@app.route('/getClass')
-def get_class():
-    prof_id = request.args.get('review_professor_id')
-    r = requests.get("http://api.culpa.info/professor_id/"+prof_id);
-    # Return stub response for class search.
-    with open("./data/class.json", 'r') as f:
-        _data = f.read()
-        course_obj = json.loads(_data)
-        # for i in range(course_objs.courses):
-        #     course_obj.messages[0].quick_replies[i].title = course_objs.courses[i].name
-        return jsonify(course_obj)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
