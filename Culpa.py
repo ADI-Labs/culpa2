@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, jsonify
 import json
 import requests
 from flask import request
@@ -26,8 +26,8 @@ def get_professor():
         _data = f.read()
         return_prof = json.loads(_data)
         # for i in range(len(prof_searches)):
-        #     return_prof.messages[0].quick_replies[i].title = prof_searches[i].first_name + " " + prof_searches[i].middle_name + " " + prof_searches[i].last_name
-        return json.dumps(return_prof)
+        #     return_prof['messagess'][0]['quick_replies'][i]['title'] = prof_searches[i].first_name + " " + prof_searches[i].middle_name + " " + prof_searches[i].last_name
+        return jsonify(return_prof)
 
 @app.route('/getClass')
 def get_class():
