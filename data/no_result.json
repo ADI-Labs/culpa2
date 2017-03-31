@@ -2,8 +2,18 @@
   "messages": [
     {
       "text":  "There doesn't seem to be a professor with that name. Check your spelling or search another professor.",
-      "block_name": "Entry Professor Demo",
-      "type": "show_block"
+      "buttons" : [ 
+        {
+        "title": "Look up another professor 📝",
+        "block_name": "Entry Professor Demo",
+        "type": "show_block"
+        },
+        {
+        "title": "Look up review 🔎",
+        "block_name": "Lookup Query",
+        "type": "show_block"
+        },
+      ] 
     }
   ]
 }
