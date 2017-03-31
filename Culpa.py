@@ -22,11 +22,11 @@ def store_review():
 def get_professor():
     prof = request.args.get('prof')
     prof_searches = session.query(Professors.professor).filter(Professors.professor.last_name.like("%Rob%")).all()
-    with open("../data/professor.json", 'r') as f:
+    with open("./data/professor.json", 'r') as f:
         _data = f.read()
         return_prof = json.loads(_data)
-        for i in range(prof_searches.length):
-            return_prof.messages[0].quick_replies[i].title = prof_searches[i].first_name + " " + prof_searches[i].middle_name + " " + prof_searches[i].last_name
+        # for i in range(len(prof_searches)):
+        #     return_prof.messages[0].quick_replies[i].title = prof_searches[i].first_name + " " + prof_searches[i].middle_name + " " + prof_searches[i].last_name
         return json.dumps(return_prof)
 
 @app.route('/getClass')

@@ -5,53 +5,53 @@
       "quick_replies": [
         {
           "title":"Professor 1",
-          "set_attributes": 
+          "set_attributes":
             {
               "review_professor": "Professor 1",
               "review_professor_id": "1"
             },
           "block_names": ["Entry Class Demo"],
-          "type": "show_block",
+          "type": "show_block"
         },
         {
           "title":"Professor 2",
-          "set_attributes": 
+          "set_attributes":
             {
               "review_professor": "Professor 2",
               "review_professor_id": "2"
             },
           "block_names": ["Entry Class Demo"],
-          "type": "show_block",
+          "type": "show_block"
         },
         {
           "title":"Professor 3",
-          "set_attributes": 
+          "set_attributes":
             {
               "review_professor": "Professor 3",
               "review_professor_id": "3"
             },
           "block_names": ["Entry Class Demo"],
-          "type": "show_block",
+          "type": "show_block"
         },
         {
           "title":"Professor 4",
-          "set_attributes": 
+          "set_attributes":
             {
               "review_professor": "Professor 4",
               "review_professor_id": "4"
             },
           "block_names": ["Entry Class Demo"],
-          "type": "show_block",
+          "type": "show_block"
         },
         {
           "title":"Professor 5",
-          "set_attributes": 
+          "set_attributes":
             {
               "review_professor": "Professor 5",
               "review_professor_id": "5"
             },
           "block_names": ["Entry Class Demo"],
-          "type": "show_block",
+          "type": "show_block"
         }
       ]
     }
