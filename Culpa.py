@@ -30,7 +30,7 @@ def get_professor():
             "title": prof.first_name + prof.last_name,
             "set_attributes": {
                 "review_professor": prof.first_name + " " + prof.last_name,
-                "review_professor_id": 0
+                "review_professor_id": prof.professor_key
             },
             "block_names": ["Entry Class Demo"],
             "type": "show_block"
