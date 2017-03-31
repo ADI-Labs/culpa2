@@ -69,12 +69,14 @@ def get_class():
     prof_id = request.args.get('review_professor_id')
     r = requests.get("http://api.culpa.info/courses/professor_id/"+prof_id);
     json_response = r.json()
-    courses = json_response['courses']
 
+    courses = json_response['courses']
 
     course_options = []
 
-    for course in courses:
+    # TODO: Truncate to 5 and handle no results.
+
+    for course in courses[0:4]:
         course_options.append({
             "title": course['name'],
             "set_attributes": {
