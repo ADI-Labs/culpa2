@@ -11,7 +11,8 @@ HOST = ""
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return 'CULPA2 API Server'
+
 @app.route('/saveReview')
 def store_review():
     tr = True;
