@@ -20,7 +20,7 @@ def store_review():
 
 @app.route('/getProfessor')
 def get_professor():
-    prof = request.args.get('prof')
+    prof = request.args.get('review_professor')
     prof_searches = session.query(Professors.professor).filter(Professors.professor.last_name.like("%{0}%".format(prof))).all()
 
     professor_options = []
