@@ -24,7 +24,17 @@ def get_professor():
     prof_searches = session.query(Professors.professor).filter(Professors.professor.last_name.ilike("%{0}%".format(prof))).limit(5).all()
 
     if len(prof_searches) == 0:
-        return jsonify({})
+        response = {
+          "messages": [
+            {
+              "text":  "There doesn't seem to be a professor with that name. Check your spelling or search another professor.",
+              "block_names": ["Entry Professor Demo"],
+              "type": "show_block"
+            }
+          ]
+        }
+
+        return jsonify(response)
     else:
         professor_options = []
 
