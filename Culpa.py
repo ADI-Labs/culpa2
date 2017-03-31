@@ -83,7 +83,7 @@ def get_class():
                 "review_class": course['name'],
                 "review_professor_id": prof_id
             },
-            "block_names": ["Review Demo"],
+            "block_names": ["Review Entry"],
             "type": "show_block"
         })
 
