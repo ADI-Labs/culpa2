@@ -33,13 +33,12 @@ def get_professor():
 def get_class():
     prof_id = request.args.get('id')
     r = requests.get("http://api.culpa.info/professor_id/"+prof_id);
-    with open("../data/professor.json", 'r') as f:
+    with open("./data/class.json", 'r') as f:
         _data = f.read()
         course_obj = json.loads(_data)
-        course_objs = r.json()
-        for i in range(course_objs.courses):
-            course_obj.messages[0].quick_replies[i].title = course_objs.courses[i].name
-        return json.dumps(course_obj)
+        # for i in range(course_objs.courses):
+        #     course_obj.messages[0].quick_replies[i].title = course_objs.courses[i].name
+        return jsonify(course_obj)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
