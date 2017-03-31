@@ -37,7 +37,7 @@ def get_professor():
         })
 
     response = {
-        'message': {
+        'messages': {
             "text": "Which of these names looks right?",
             "quick_replies": professor_options
         }
