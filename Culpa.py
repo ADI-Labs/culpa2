@@ -42,7 +42,7 @@ def get_professor():
     else:
         professor_options = []
 
-        for prof in prof_searches:
+        for prof in prof_searches[0:4]:
             professor_options.append({
                 "title": prof['first_name'] + " " + prof['last_name'],
                 "set_attributes": {
