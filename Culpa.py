@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 from flask import Flask, jsonify
 import json
@@ -32,12 +34,21 @@ def get_professor():
           "messages": [
             {
               "text":  "There doesn't seem to be a professor with that name. Check your spelling or search another professor.",
-              "block_name": "Entry Professor Demo",
-              "type": "show_block"
+              "buttons" : [
+                {
+                    "title": "Search again 📝",
+                    "block_name": "Entry Professor Demo",
+                    "type": "show_block"
+                },
+                {
+                    "title": "Look up a review 🔎",
+                    "block_name": "Lookup Query",
+                    "type": "show_block"
+                },
+              ]
             }
           ]
         }
-
         return jsonify(response)
     else:
         professor_options = []
