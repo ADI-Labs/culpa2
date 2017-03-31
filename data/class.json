@@ -1,0 +1,59 @@
+{
+  "messages": [
+    {
+      "text":  "Here's the classes taught by {{review_professor}}. Which one would you like to review?",
+      "quick_replies": [
+        {
+          "title":"Class 1",
+          "set_attributes": 
+            {
+              "review_class": "Class 1",
+              "review_class_id": "1"
+            },
+          "block_names": ["Review Entry"],
+          "type": "show_block",
+        },
+        {
+          "title":"Class 2",
+          "set_attributes": 
+            {
+              "review_class": "Class 2",
+              "review_class_id": "1"
+            },
+          "block_names": ["Review Entry"],
+          "type": "show_block",
+        },
+        {
+          "title":"Class 3",
+          "set_attributes": 
+            {
+              "review_class": "Class 3",
+              "review_class_id": "1"
+            },
+          "block_names": ["Review Entry"],
+          "type": "show_block",
+        },
+        {
+          "title":"Class 4",
+          "set_attributes": 
+            {
+              "review_class": "Class 4",
+              "review_class_id": "1"
+            },
+          "block_names": ["Review Entry"],
+          "type": "show_block",
+        },
+        {
+          "title":"Class 5",
+          "set_attributes": 
+            {
+              "review_class": "Class 5",
+              "review_class_id": "1"
+            },
+          "block_names": ["Review Entry"],
+          "type": "show_block",
+        }
+      ]
+    }
+  ]
+}

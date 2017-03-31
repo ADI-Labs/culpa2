@@ -9,7 +9,7 @@ class professor(Base):
     first_name = Column(String)
     middle_name = Column(String)
     last_name = Column(String)
-    id = Column(Integer, primary_key=True)
+    professor_key = Column(Integer, primary_key=True, autoincrement=True)
 
     def __repr__(self):
         return str(self.first_name) + str(self.middle_name) + str(self.last_name)

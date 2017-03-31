@@ -6,7 +6,8 @@ Base = declarative_base()
 class departmemt(Base):
     __tablename__ = 'departments'
     name = Column(String)
-    id = Column(Integer, primary_key=True)
+    department_key = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer)
 
     def __repr__(self):
         return str(self.name)
