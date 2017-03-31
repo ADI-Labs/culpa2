@@ -32,7 +32,7 @@ def get_professor():
           "messages": [
             {
               "text":  "There doesn't seem to be a professor with that name. Check your spelling or search another professor.",
-              "block_names": "Entry Professor Demo",
+              "block_name": "Entry Professor Demo",
               "type": "show_block"
             }
           ]
