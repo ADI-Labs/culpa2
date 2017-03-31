@@ -17,7 +17,7 @@ class professor(Base):
             'first_name': self.first_name,
             'middle_name': self.middle_name,
             'last_name': self.last_name,
-            'profesorr_key': self.professor_key
+            'professor_key': self.professor_key
         }
 
     def __repr__(self):

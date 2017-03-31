@@ -21,7 +21,11 @@ def store_review():
 @app.route('/getProfessor')
 def get_professor():
     prof = request.args.get('review_professor')
-    prof_searches = session.query(Professors.professor).filter(Professors.professor.last_name.ilike("%{0}%".format(prof))).limit(5).all()
+    # prof_searches = session.query(Professors.professor).filter(Professors.professor.last_name.ilike("%{0}%".format(prof))).limit(5).all()
+    r = requests.get("http://api.culpa.info/professors/search/"+prof);
+    json_response = r.json()
+
+    prof_searches = json_response['professors']
 
     if len(prof_searches) == 0:
         response = {
