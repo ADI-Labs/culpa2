@@ -22,6 +22,7 @@ def store_review():
 def get_professor():
     prof = request.args.get('prof')
     prof_searches = session.query(Professors.professor).filter(Professors.professor.last_name.like("%Rob%")).all()
+    # Return stub response for professor search.
     with open("./data/professor.json", 'r') as f:
         _data = f.read()
         return_prof = json.loads(_data)
@@ -31,8 +32,9 @@ def get_professor():
 
 @app.route('/getClass')
 def get_class():
-    prof_id = request.args.get('id')
+    prof_id = request.args.get('review_professor_id')
     r = requests.get("http://api.culpa.info/professor_id/"+prof_id);
+    # Return stub response for class search.
     with open("./data/class.json", 'r') as f:
         _data = f.read()
         course_obj = json.loads(_data)
