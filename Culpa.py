@@ -45,7 +45,7 @@ def get_professor():
     else:
         professor_options = []
 
-        for prof in prof_searches[0:4]:
+        for prof in prof_searches[0:5]:
             professor_options.append({
                 "title": prof['first_name'] + " " + prof['last_name'],
                 "set_attributes": {
@@ -77,7 +77,7 @@ def get_class():
 
     course_options = []
 
-    for course in courses[0:4]:
+    for course in courses[0:5]:
         course_options.append({
             "title": course['name'],
             "set_attributes": {
@@ -122,7 +122,7 @@ def search_class():
     else:
         course_options = []
 
-        for course in courses[0:4]:
+        for course in courses[0:5]:
             course_options.append({
                 "title": course['name'],
                 "set_attributes": {
@@ -154,7 +154,7 @@ def get_professor_by_class():
 
     professor_options = []
 
-    for prof in prof_searches[0:4]:
+    for prof in prof_searches[0:5]:
         professor_options.append({
             "title": prof['first_name'] + " " + prof['last_name'],
             "set_attributes": {
