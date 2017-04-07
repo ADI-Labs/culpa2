@@ -177,6 +177,60 @@ def get_professor_by_class():
 
     return jsonify(response)
 
+@app.route('/getReview')
+def get_review():
+    lookup_class_id = int(request.args.get('lookup_class_id'))
+    lookup_professor_id = int(request.args.get('lookup_professor_id'))
+    r = requests.get("http://api.culpa.info/reviews/professor_id/"+str(lookup_professor_id));
+    json_response = r.json()
+
+    reviews = json_response['reviews']
+    valid_reviews = []
+
+    for review in reviews:
+        if(review.get('course_ids')):
+            course_id = review.get('course_ids')[0]
+        if(course_id == lookup_class_id):
+            valid_reviews.append(review)
+
+    if len(valid_reviews) == 0:
+        response = {
+            "messages": [
+              {
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                    "template_type": "button",
+                    "text": "It doesn't look like there are any reviews for the class taught by this professor, sorry!",
+                    "buttons": [
+                      {
+                        "title": "Leave a review instead 📝",
+                  		"block_name": "Professor Search",
+                  		"type": "show_block"
+                      },
+                      {
+                        "title": "Look up a different review 🔎",
+                  		"block_name": "Look Up Class",
+                  		"type": "show_block"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+        }
+    else:
+        response = {
+            'messages': [
+                    {"text": 'This is how one person feels:'},
+                    {"text": valid_reviews[0]['review_text']},
+                    {"text": 'This is how they felt about the workload:'},
+                    {"text": valid_reviews[0]['workload_text']}
+            ]
+        }
+
+    return jsonify(response)
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
