@@ -136,7 +136,7 @@ def search_class():
         response = {
             'messages': [
                 {
-                    "text": "Here's the classes that sound like {{lookup_class}}. Which one would you like to look at?",
+                    "text": "Here's the classes that look like \"{{lookup_class}}\". Which one would you like to look at?",
                     "quick_replies": course_options
                 }
             ]
