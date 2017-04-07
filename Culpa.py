@@ -34,7 +34,7 @@ def get_professor():
           "set_attributes":
           {
             "review_professor": "-1"
-          }
+          },
           "messages": [
             {
               "text":  "There doesn't seem to be a professor with that name. Check your spelling or search another professor."
