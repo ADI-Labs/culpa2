@@ -31,21 +31,13 @@ def get_professor():
 
     if len(prof_searches) == 0:
         response = {
+          "set_attributes":
+          {
+            "review_professor": "-1"
+          }
           "messages": [
             {
-              "text":  "There doesn't seem to be a professor with that name. Check your spelling or search another professor.",
-              "buttons" : [
-                {
-                    "title": "Search again 📝",
-                    "block_name": "Entry Professor Demo",
-                    "type": "show_block"
-                },
-                {
-                    "title": "Look up a review 🔎",
-                    "block_name": "Lookup Query",
-                    "type": "show_block"
-                },
-              ]
+              "text":  "There doesn't seem to be a professor with that name. Check your spelling or search another professor."
             }
           ]
         }
