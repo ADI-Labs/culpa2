@@ -155,16 +155,8 @@ def get_professor_by_class():
     professor_options = []
 
     for prof in prof_searches[0:5]:
-        nugget = ''
-        if(prof['nugget']!='None'):
-            if(prof['nugget']=='Gold'):
-                nugget = 'Gold'
-            elif(prof['nugget']=='Silver'):
-                nugget = '\udeb9'
-            elif(prof['nugget']=='Bronze'):
-                nugget = 'Bronze'
         professor_options.append({
-            "title": prof['first_name'] + " " + prof['last_name']+ " " + nugget,
+            "title": prof['first_name'] + " " + prof['last_name'],
             "set_attributes": {
                 "lookup_professor": prof['first_name'] + " " + prof['last_name'],
                 "lookup_professor_id": prof['id']
