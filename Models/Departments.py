@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
 
-class departmemt(Base):
+class department(Base):
     __tablename__ = 'departments'
     name = Column(String)
     department_key = Column(Integer, primary_key=True, autoincrement=True)

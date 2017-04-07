@@ -52,7 +52,7 @@ def get_professor():
                     "review_professor": prof['first_name'] + " " + prof['last_name'],
                     "review_professor_id": prof['id']
                 },
-                "block_names": ["Entry Class Demo"],
+                "block_names": ["Class Search"],
                 "type": "show_block"
             })
 
