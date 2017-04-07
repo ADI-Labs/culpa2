@@ -77,8 +77,6 @@ def get_class():
 
     course_options = []
 
-    # TODO: Truncate to 5 and handle no results.
-
     for course in courses[0:4]:
         course_options.append({
             "title": course['name'],
@@ -95,6 +93,83 @@ def get_class():
             {
                 "text": "Here's the classes taught by {{review_professor}}. Which one would you like to review?",
                 "quick_replies": course_options
+            }
+        ]
+    }
+
+    return jsonify(response)
+
+@app.route('/searchClass')
+def search_class():
+    lookup_class = request.args.get('lookup_class')
+    r = requests.get("http://api.culpa.info/courses/search/"+lookup_class);
+    json_response = r.json()
+
+    courses = json_response['courses']
+
+    if len(courses) == 0:
+        response = {
+          "set_attributes":
+          {
+            "lookup_class": "-1"
+          },
+          "messages": [
+            {
+              "text":  "There doesn't seem to be a class with that name. Check your spelling or search another class."
+            }
+          ]
+        }
+    else:
+        course_options = []
+
+        for course in courses[0:4]:
+            course_options.append({
+                "title": course['name'],
+                "set_attributes": {
+                    "lookup_class": course['name'],
+                    "lookup_class_id": course['id'],
+                },
+                "block_names": ["Choose Class Professor"],
+                "type": "show_block"
+            })
+
+        response = {
+            'messages': [
+                {
+                    "text": "Here's the classes that sound like {{lookup_class}}. Which one would you like to look at?",
+                    "quick_replies": course_options
+                }
+            ]
+        }
+
+    return jsonify(response)
+
+@app.route('/getProfessorByClass')
+def get_professor_by_class():
+    lookup_class_id = request.args.get('lookup_class_id')
+    r = requests.get("http://api.culpa.info/professors/course_id/"+lookup_class_id);
+    json_response = r.json()
+
+    prof_searches = json_response['professors']
+
+    professor_options = []
+
+    for prof in prof_searches[0:4]:
+        professor_options.append({
+            "title": prof['first_name'] + " " + prof['last_name'],
+            "set_attributes": {
+                "lookup_professor": prof['first_name'] + " " + prof['last_name'],
+                "lookup_professor_id": prof['id']
+            },
+            "block_names": ["Get Review"],
+            "type": "show_block"
+        })
+
+    response = {
+        'messages': [
+            {
+                "text": "Which of these teachers would you like to look at?",
+                "quick_replies": professor_options
             }
         ]
     }
