@@ -10,6 +10,7 @@ from sqlalchemy import create_engine, func,select
 from setup import session
 
 app = Flask(__name__)
+app.config["DEBUG"] = True
 HOST = ""
 
 @app.route('/')
@@ -158,7 +159,7 @@ def get_professor_by_class():
         professor_options.append({
             "title": prof['first_name'] + " " + prof['last_name'],
             "set_attributes": {
-                "lookup_professor": prof['first_name'] + " " + prof['last_name'],
+                "lookup_professor": prof['first_name'] + " " + prof['last_name']+" \ud83d\ude04",
                 "lookup_professor_id": prof['id']
             },
             "block_names": ["Get Review"],
