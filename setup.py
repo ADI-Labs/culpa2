@@ -1,6 +1,6 @@
 import requests
 import json
-from Models.Departments import departmemt
+from Models.Departments import department
 from Models.Professors import professor
 from Models.Courses import course
 from sqlalchemy import create_engine
